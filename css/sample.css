@@ -1,0 +1,105 @@
+body{
+    margin:0;
+    padding:0;
+    text-align:left;
+    font-size: 32px;
+    width:100%;
+}
+header{
+    padding:10px;
+}
+h1{
+    margin:0px;
+    text-align:center;
+}
+#kadai{
+    width: 100%;
+}
+#task{
+    width: 100%;
+    margin:0 auto;
+}
+#inputerea,#title,#products,#sent{
+    display: flex;
+}
+#inputerea,#sent{
+    width: 600px;
+    margin:0 auto;
+}
+#sent{
+    margin:30px auto;
+    justify-content: center;
+}
+#sent #save{
+    margin:0 0 0 20px;
+}
+#taskbox,#responsible{
+    width: 200px;
+    height: 25px;
+}
+#inputerea{
+    background-color: darksalmon;
+    border-radius: 10px;
+    height: 100px;
+    justify-content: center;
+    align-items: center;
+}
+#inputerea p{
+    margin:0 10px;
+    font-size:20px;
+    font-weight: bold;
+}
+#outputarea{
+    /* display: flex; */
+    padding:20px;
+    width: 600px;
+    margin:0 auto;
+}
+#projects{
+    width: 100%;
+    background-color: rgb(96, 183, 212);
+    border-radius: 10px;
+    justify-content: center;
+    align-items: center;
+    padding:10px;
+}
+#projects p{
+    font-size:20px;
+    font-weight: bold;
+    width: 550px;
+    margin:10px auto;
+    text-align: center;
+}
+table{
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 600px;
+    margin:0 auto;
+}
+table tr {
+	background: #fff;
+}
+table tr:nth-child(odd) {
+	background: #eee;
+}
+th,td{
+    padding:10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+th{
+    height: 30px;
+    width:43%;
+}
+td{
+    text-align :center;
+}
+td:nth-of-type(1){
+    height: 30px;
+    width:43%;
+}
+#member{
+    width: 650px;
+    margin:0 0 0 50px;
+    padding:10px;
+}
