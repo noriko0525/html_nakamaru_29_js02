@@ -118,6 +118,9 @@ td:nth-of-type(1){
     #inputerea, #sent ,#outputarea{
         width: 100%;
     }
+    #sent{
+        margin:10px;
+    }
     #inputerea{
         flex-wrap:wrap;
     }
@@ -127,6 +130,10 @@ td:nth-of-type(1){
     #inputerea p{
         width: 80px;
         font-size:16px;
+    }
+    #taskbox, #responsible {
+        width: 60%;
+        height: 25px;
     }
     #output{
         margin: 10px;
