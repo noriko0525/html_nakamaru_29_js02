@@ -107,6 +107,9 @@ td:nth-of-type(1){
     padding:10px;
 }
 @media screen and (max-width: 768px){
+    body{
+        background-color: lightgray;
+    }
     h1{
         width: 100%;
         font-size:21px;
@@ -121,6 +124,9 @@ td:nth-of-type(1){
     #sent{
         margin:10px;
     }
+    #sent #save{
+        margin:0 !important;
+    }
     #inputerea{
         flex-wrap:wrap;
     }
@@ -129,8 +135,23 @@ td:nth-of-type(1){
     }
     #inputerea p{
         width: 80px;
-        font-size:16px;
+        padding-top:8px;
+        font-size:12px;
         text-align: right;
+        display: table-cell;
+        vertical-align: middle;
+    }
+    button{
+        position: relative;
+        display: inline-block;
+        padding: 0.25em 0.5em;
+        text-decoration: none;
+        color: rgb(49, 49, 49);
+        background: #f3fbfffd;/*色*/
+        border: solid 1px #8b8b8b;/*線色*/
+        border-radius: 4px;
+        box-shadow: inset 0 1px 0 rgba(255,255,255,0.2);
+        text-shadow: 0 1px 0 rgba(0,0,0,0.2);
     }
     #taskbox, #responsible {
         width: 60%;
@@ -147,7 +168,7 @@ td:nth-of-type(1){
         padding: 5px;
         font-size: 20px;
         font-weight: bold;
-        font-size:16px;
+        font-size:12px;
     }
     td:nth-of-type(1) {
         height: 30px;
@@ -155,6 +176,7 @@ td:nth-of-type(1){
     }
     #projects p {
         width:100%;
+        margin:0 0 10px 0;
         font-size:16px;
     }
 }
