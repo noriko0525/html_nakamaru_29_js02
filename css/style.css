@@ -33,9 +33,20 @@ h1{
 #sent #save{
     margin:0 0 0 20px;
 }
+#title {
+    display: flex;
+    align-items: center;
+}
 #taskbox,#responsible{
     width: 200px;
     height: 25px;
+    border: 2px solid #b3b3b3;  /* 枠線 */
+    border-radius: 4px;   /* 角丸 */
+    background-color: snow;  /* 背景色 */
+    font-size: 14px;          /* 文字サイズ */
+    line-height: 1.2;        /* 行の高さ */
+    justify-content: center;
+    align-items: center;
 }
 #inputerea{
     background-color: darksalmon;
@@ -48,6 +59,9 @@ h1{
     margin:0 10px;
     font-size:20px;
     font-weight: bold;
+    padding:4px 0;
+    height: 25px;
+    vertical-align: 25px;
 }
 #output{
     margin:0 auto;
@@ -106,26 +120,29 @@ td:nth-of-type(1){
     margin:0 0 0 50px;
     padding:10px;
 }
-button.input,button.save{
-display: inline-block;
-text-decoration: none;
-color: #FFF;
-width: 120px;
-height: 40px;
-border-radius: 10px;
-border:none;
-text-align: center;
-font-weight: bold;
-font-size: 18px;
-}
-button.input,button.save:hover{
-  cursor: pointer;
-}
-button.input{
-  background: darksalmon;
-}
-button.save{
-  background: rgb(96, 183, 212);
+@media screen and (min-width: 769px){
+    button.input,button.save{
+        display: inline-block;
+        text-decoration: none;
+        background: rgb(96, 183, 212);
+        color: #FFF;
+        width: 120px;
+        height: 40px;
+        border-radius: 10px;
+        border:none;
+        text-align: center;
+        font-weight: bold;
+        font-size: 18px;
+      }
+      button.input,button.save:hover{
+          cursor: pointer;
+      }
+      button.input{
+          background: darksalmon;
+        }
+      button.save{
+          background: rgb(96, 183, 212);
+        }
 }
 @media screen and (max-width: 768px){
     body{
@@ -154,13 +171,16 @@ button.save{
     #title,#products{
         width: 100%;
     }
+    #taskbox,#responsible{
+        font-size: 20px;
+    }
     #inputerea p{
         width: 60px;
         padding-top:8px;
         font-size:12px;
         text-align: right;
-        display: table-cell;
-        vertical-align: middle;
+        height: 18px;
+        vertical-align: 18px;
     }
     button{
         position: relative;
