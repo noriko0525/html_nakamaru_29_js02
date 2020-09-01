@@ -130,10 +130,12 @@ td:nth-of-type(1){
     #inputerea p{
         width: 80px;
         font-size:16px;
+        text-align: right;
     }
     #taskbox, #responsible {
         width: 60%;
         height: 25px;
+        margin: 0 10px 0 0;
     }
     #output{
         margin: 10px;
