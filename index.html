@@ -69,7 +69,7 @@ $("#input").on('click',function(){
         }
         const init = $(this).text();
         $(this).html('<textarea id="tdtx'+lng+'">'+init+'</textarea>');
-        $('#td'+lng+'').focus();
+        $('#tdtx'+lng+'').focus();
         $('#tdtx'+lng+'').blur(function() {
             const initlng = $('#inputprojects #tdtx'+lng+'').val();
             $(this).remove();
