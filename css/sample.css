@@ -4,6 +4,7 @@ body{
     text-align:left;
     font-size: 32px;
     width:100%;
+    font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", "Meiryo", "ＭＳ Ｐゴシック", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 }
 header{
     padding:10px;
@@ -16,7 +17,6 @@ h1{
     width: 100%;
 }
 #task{
-    width: 100%;
     margin:0 auto;
 }
 #inputerea,#title,#products,#sent{
@@ -49,14 +49,17 @@ h1{
     font-size:20px;
     font-weight: bold;
 }
+#output{
+    margin:0 auto;
+}
 #outputarea{
     /* display: flex; */
-    padding:20px;
+    /* padding:20px; */
     width: 600px;
     margin:0 auto;
 }
 #projects{
-    width: 100%;
+    /* width: 580px; */
     background-color: rgb(96, 183, 212);
     border-radius: 10px;
     justify-content: center;
@@ -73,7 +76,7 @@ h1{
 table{
     border-collapse: collapse;
     border-spacing: 0;
-    width: 600px;
+    width: 580px;
     margin:0 auto;
 }
 table tr {
@@ -102,4 +105,43 @@ td:nth-of-type(1){
     width: 650px;
     margin:0 0 0 50px;
     padding:10px;
+}
+@media screen and (max-width: 768px){
+    h1{
+        width: 100%;
+        font-size:32px;
+    }
+    #task{
+        margin:10px;
+    }
+    #inputerea, #sent ,#outputarea{
+        width: 100%;
+    }
+    #inputerea{
+        flex-wrap:wrap;
+    }
+    #title,#products{
+        width: 100%;
+    }
+    #inputerea p{
+        width: 100px;
+    }
+    #output{
+        margin: 10px;
+    }
+    table{
+        width:100%;
+    }
+    th, td {
+        padding: 5px;
+        font-size: 20px;
+        font-weight: bold;
+    }
+    td:nth-of-type(1) {
+        height: 30px;
+        width: 30%;
+    }
+    #projects p {
+        width:100%;
+    }
 }
