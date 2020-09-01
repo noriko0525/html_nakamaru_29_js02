@@ -70,6 +70,7 @@ $("#input").on('click',function(){
         const init = $(this).text();
         $(this).html('<textarea id="tdtx'+lng+'">'+init+'</textarea>');
         $('#tdtx'+lng+'').focus();
+        $('#tdtx'+lng+'').select();
         $('#tdtx'+lng+'').blur(function() {
             const initlng = $('#inputprojects #tdtx'+lng+'').val();
             $(this).remove();
@@ -141,6 +142,7 @@ function load() {
             }
             $(this).html('<textarea id="tdtx'+i+'">'+init+'</textarea>');
             $('#tdtx'+i+'').focus();
+            $('#tdtx'+i+'').select();
             $('#tdtx'+i+'').blur(function() {
                 const initlng = $('#inputprojects #tdtx'+i+'').val();
                 console.log(this);
