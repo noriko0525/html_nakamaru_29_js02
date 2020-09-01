@@ -49,7 +49,7 @@ h1{
     align-items: center;
 }
 #inputerea{
-    background-color: darksalmon;
+    background-color: #e9967a;
     border-radius: 10px;
     height: 100px;
     justify-content: center;
@@ -74,7 +74,7 @@ h1{
 }
 #projects{
     /* width: 580px; */
-    background-color: rgb(96, 183, 212);
+    background-color: #60b7d4;
     border-radius: 10px;
     justify-content: center;
     align-items: center;
@@ -120,33 +120,31 @@ td:nth-of-type(1){
     margin:0 0 0 50px;
     padding:10px;
 }
-@media screen and (min-width: 769px){
-    button.input,button.save{
-        display: inline-block;
-        text-decoration: none;
-        background: rgb(96, 183, 212);
-        color: #FFF;
-        width: 120px;
-        height: 40px;
-        border-radius: 10px;
-        border:none;
-        text-align: center;
-        font-weight: bold;
-        font-size: 18px;
-      }
-      button.input,button.save:hover{
-          cursor: pointer;
-      }
-      button.input{
-          background: darksalmon;
-        }
-      button.save{
-          background: rgb(96, 183, 212);
-        }
+button.input,button.save{
+    display: inline-block;
+    text-decoration: none;
+    color: #FFF;
+    width: 120px;
+    height: 40px;
+    border-radius: 10px;
+    border:none;
+    text-align: center;
+    font-weight: bold;
+    font-size: 18px;
+    }
+button.input:hover,button.save:hover{
+    cursor: pointer;
+    opacity: 0.5 ;
+}
+button.input{
+    background: #e9967a;
+}
+button.save{
+    background: #60b7d4;
 }
 @media screen and (max-width: 768px){
     body{
-        background-color: lightgray;
+        background-color: #d3d3d3;
     }
     h1{
         width: 100%;
@@ -187,12 +185,12 @@ td:nth-of-type(1){
         display: inline-block;
         padding: 0.25em 0.5em;
         text-decoration: none;
-        color: rgb(49, 49, 49);
+        color: #313131;
         background: #f3fbfffd;/*色*/
         border: solid 1px #8b8b8b;/*線色*/
         border-radius: 4px;
-        box-shadow: inset 0 1px 0 rgba(255,255,255,0.2);
-        text-shadow: 0 1px 0 rgba(0,0,0,0.2);
+        box-shadow: inset 0 1px 0 #ffffff33;
+        text-shadow: 0 1px 0 #00000033;
     }
     #taskbox, #responsible {
         width: 60%;
@@ -219,5 +217,27 @@ td:nth-of-type(1){
         width:100%;
         margin:0 0 10px 0;
         font-size:12px;
+    }
+    button.input,button.save{
+        display: inline-block;
+        text-decoration: none;
+        color: #FFF;
+        width: 120px;
+        height: 30px;
+        border-radius: 10px;
+        border:none;
+        text-align: center;
+        font-weight: bold;
+        font-size: 12px;
+        }
+    button.input:hover,button.save:hover{
+        cursor: pointer;
+        opacity: 0.5 ;
+    }
+    button.input{
+        background: #e9967a;
+    }
+    button.save{
+        background: #60b7d4;
     }
 }
