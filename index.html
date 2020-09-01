@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, minimum-scale=1, maximum-scale=1">
 <title>myMemoPad</title>
 <script src="js/jquery-2.1.3.min.js"></script>
 <link rel="stylesheet" href="css/sample.css">
@@ -26,16 +27,18 @@
         <button id="input">買う</button>
     </div>
 </div>
-<div id="outputarea">
-    <!-- 買い足し管理 -->
-    <div id="projects">
-        <p>毎回保存をおしてね<br>
-        個数はクリックして書き換えできるよ</p>
-        <table id="inputprojects">
-        </table>
-    </div>
-    <div id="sent">
-        <button id="save">保存</button>
+<div id="output">
+    <div id="outputarea">
+        <!-- 買い足し管理 -->
+        <div id="projects">
+            <p>毎回保存をおしてね<br>
+            個数はクリックして書き換えできるよ</p>
+            <table id="inputprojects">
+            </table>
+        </div>
+        <div id="sent">
+            <button id="save">保存</button>
+        </div>
     </div>
 </div>
 <script>
