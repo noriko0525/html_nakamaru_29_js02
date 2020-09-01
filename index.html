@@ -57,9 +57,8 @@ $("#input").on('click',function(){
     const lng = $( '#inputprojects tr' ).length;
     const html = '<tr><th id=thname'+lng+'>'+value+'</th><td id=task'+lng+' class="itemp">'+responsible+'</td><td><button id="gyou'+lng+'">削除</button></td></tr>';
     $("#inputprojects").prepend(html);
+    $("#taskbox,#responsible").val("");
     $('#inputprojects #gyou'+lng+'').on('click', function(){      
-        const thname = $('#inputprojects #thname'+lng+'').text();
-        console.log(thname);
         $(this).parent().parent().remove();
         save();
     });
