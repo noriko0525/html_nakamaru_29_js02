@@ -42,6 +42,15 @@
     </div>
 </div>
 <script>
+$(function(){
+ 
+        $(window).resize(function() {
+ 
+            console.log($(window).width());
+ 
+        });
+ 
+    });
 $("#input").on('click',function(){
     const value = $("#taskbox").val();
     const responsible = $("#responsible").val();
