@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="jp">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="js/jquery-2.1.3.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.10.0/jquery-ui.js"></script>
+    <title>Document</title>
+    <style>
+
+    /* 各タスク選択 */
+    #btn{
+        z-index: 101;
+        position: absolute;
+    }
+    /* boardの表示非表示 */
+    .invisible{
+        display:none;
+    }
+    .visible{
+        display:block;
+    }
+    /* 各背景設定 */
+    .board-a,.board-b,.board-c{
+        position: absolute;
+        width: 100%;
+        height: 1300px;
+    }
+    .board-a{
+        position:absolute;
+        top:0;
+        left: 0;
+        background-color: deeppink;
+    }
+    .board-b{
+        position:absolute;
+        top:0;
+        left: 0;
+        background-color: rgb(20, 24, 255);
+    }
+    .board-c{
+        position:absolute;
+        top:0;
+        left: 0;
+        background-color: rgb(20, 255, 224);
+    }
+    /* メモ設定 */
+    .memo{
+        width: 250px;
+        height: 150px;
+        border-radius: 10px;
+        background-color: floralwhite;
+    }
+    p{
+        width: 200px;
+        height: 20px;
+        margin:10px auto;
+        padding: 0;
+        text-align: center;
+    }
+    p textarea{
+        width: 200px;
+        height: 20px;
+        padding: 5px 0 0 0;
+        text-align: center;
+    }
+    .memoText{
+        width: 230px;
+        height: 65px;
+        margin:10px auto;
+        background-color: rgb(255, 255, 255);
+        border:solid 1px  rgb(102, 102, 102);
+        font-size: 12px;
+    }
+    .memoText textarea{
+        width: 230px;
+        height: 65px;
+    }
+    .save{
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        width:110px;
+        height: 20px;
+        border-radius: 8px;
+        text-align: center;
+        background-color: fuchsia;
+        color: white;
+        font-size: 12px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+    .delete{
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        width:110px;
+        height: 20px;
+        border-radius: 8px;
+        text-align: center;
+        background-color: fuchsia;
+        color: white;
+        font-size: 12px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+    </style>
+</head>
+<body>
+    <div id="btn">
+        <button class="a">ボタン1</button>
+        <button class="b">ボタン2</button>
+        <button class="c">ボタン3</button>
+    </div>
+    <div id="loadBoard" class="board-a invisible"></div>
+    <div id="loadBoard" class="board-b invisible"></div>
+    <div id="loadBoard" class="board-c invisible"></div>
+    <script>
+    
+    let isTextAreaRemoved = false;
+    function InitializeBoard(num1,num2){
+        {
+            let data = JSON.parse(localStorage.getItem('json'+num1));
+            if(data != null){
+                for(let i=0;i<data.length;i++){
+                    console.log(data[i]);
+                    let memo = '<div class="'+num2+' memo" style="position:absolute;left:'+ data[i][2] +'px;top:'+ data[i][3] +'px"><p class="memoClass'+i+'">'+ data[i][0] +'</p><div class="memoText memoAppend'+i+'">'+ data[i][1] +'</div><div class="save">SAVE</div><div class="delete">DELETE</div></div>';
+                    $('.board-'+num1+'').append(memo);
+                    $(".memo").draggable();
+                    $('.board-'+num1+' p.memoClass'+i+'').on('click',function(e){
+                        let inputText =$(this).text();
+                        $(this).html('<textarea>'+inputText+'</textarea>');
+                        $('textarea').focus()
+                        $('textarea').select();
+                        $('textarea').blur(function(e){
+                            let titleText = $(this).val();
+                            $('.board-'+num1+' p.memoClass'+i+'').text(titleText);
+                            $('.board-'+num1+' p.memoClass'+i+' textarea').remove();
+                            isTextAreaRemoved = true;
+                            return false;
+                        });
+                        return false;
+                    });
+                    $('.board-'+num1+' .memoAppend'+i+'').on('click',function(e){
+                        let inputText =$(this).text();
+                        $(this).html('<textarea>'+inputText+'</textarea>');
+                        $('.memoAppend'+i+' textarea').focus()
+                        $('.memoAppend'+i+' textarea').select();
+                        $('.memoAppend'+i+' textarea').blur(function(e){
+                            let todoText = $(this).val();
+                            $('.board-'+num1+' .memoAppend'+i+'').text(todoText);
+                            $('.board-'+num1+' .memoAppend'+i+' textarea').remove();
+                            isTextAreaRemoved = true;
+                            return false;
+                        });
+                        return false;
+                    });
+                };
+            }
+        }
+
+        $('.board-'+num1+'').removeClass('invisible').addClass('visible');
+        if(num1 == 'a'){
+            $('.board-b, .board-c').removeClass('visible').addClass('invisible');
+        }else if(num1 == 'b'){
+            $('.board-a, .board-c').removeClass('visible').addClass('invisible');
+        }else{
+            $('.board-a, .board-b').removeClass('visible').addClass('invisible');
+        };
+        
+        $('.board-'+num1+'').on('click',function(e){
+            var x = e.clientX;
+            var y = e.clientY;
+
+            if(isTextAreaRemoved){
+                isTextAreaRemoved = false ;
+                return;
+            };
+
+            let memoLength = $('.board-'+num1+' p').length;
+            function memoAppend(){
+                let memo = '<div class="'+num2+' memo" style="position:absolute;left:'+x+'px;top:'+y+'px"><p class="memoClass'+memoLength+'">メモ</p><div class="memoText memoAppend'+memoLength+'">ここにテキスト</div><div class="save">SAVE</div><div class="delete">DELETE</div></div>';
+                $('.board-'+num1+'').append(memo);
+                $(".memo").draggable();
+                $('.board-'+num1+' p.memoClass'+memoLength+'').on('click',function(e){
+                    let inputText =$(this).text();
+                    $(this).html('<textarea>'+inputText+'</textarea>');
+                    $('textarea').focus()
+                    $('textarea').select();
+                    $('textarea').blur(function(e){
+                        let titleText = $(this).val();
+                        $('.board-'+num1+' p.memoClass'+memoLength+'').text(titleText);
+                        $('.board-'+num1+' p.memoClass'+memoLength+' textarea').remove();
+                        isTextAreaRemoved = true;
+                        return false;
+                    });
+                    return false;
+                });
+                $('.board-'+num1+' .memoAppend'+memoLength+'').on('click',function(e){
+                    let inputText =$(this).text();
+                    $(this).html('<textarea>'+inputText+'</textarea>');
+                    $('.memoAppend'+memoLength+' textarea').focus()
+                    $('.memoAppend'+memoLength+' textarea').select();
+                    $('.memoAppend'+memoLength+' textarea').blur(function(e){
+                        let todoText = $(this).val();
+                        $('.board-'+num1+' .memoAppend'+memoLength+'').text(todoText);
+                        $('.board-'+num1+' .memoAppend'+memoLength+' textarea').remove();
+                        isTextAreaRemoved = true;
+                        return false;
+                    });
+                    return false;
+                });
+            }
+            memoAppend();
+
+            $('.'+num2+' .delete').on('click',function(){
+                $(this).parent().remove();
+                save()
+                return false;
+            });
+            $('.'+num2+' .save').on('click',function(){
+                save()
+                return false;
+            });
+            function save(){
+                var data = [];
+                let saveItem = $('.board-'+num1+' .memo');
+                for(var i=0;i<saveItem.length;i++){
+                    var x = saveItem.eq(i).offset().top;
+                    var y = saveItem.eq(i).offset().left;
+                    var title = saveItem.eq(i).children('p').text();
+                    var body = saveItem.eq(i).children('.memoText').text();
+                    data[i] = [title, body, x, y];
+                }
+                localStorage.setItem('json'+num1+'', JSON.stringify(data));
+                return false;
+            };
+        });
+    }
+    function AddMemoPad(num1,num2){
+        $('.'+num1+'').on('click', function(){
+            InitializeBoard(num1,num2);
+        }) 
+    };
+    AddMemoPad('a',1);
+    AddMemoPad('b',2);
+    AddMemoPad('c',3);
+    InitializeBoard('a',2);
+    </script>
+</body>
+</html>
